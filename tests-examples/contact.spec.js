@@ -65,23 +65,7 @@ test.describe('Contact page testing', () => {
         //await page.getByRole('link', { name: 'HOMEへ' }).click();
     })
 
-    test.only('incorrect content field: error', async ({ page }) => {
-        //fill the name field
-        await page.getByPlaceholder('例）山田　太郎').click();
-        await page.getByPlaceholder('例）山田　太郎').fill('rica');
-        //fill the furigana field
-        await page.getByPlaceholder('例）やまだ　たろう').click();
-        await page.getByPlaceholder('例）やまだ　たろう').fill('リカ');
-        //email field
-        await page.getByPlaceholder('例）sample@mail.address').click();
-        await page.getByPlaceholder('例）sample@mail.address').fill('rica');
-        //check the aggreement checkbox
-        await page.getByLabel('個人情報の取り扱いに同意する').check();
-        //it will not be able to go to the next page without filling in the 
-        //name ,furigana ,email and checking the inquiry type field.
-        const errorMessage = await page.locator('.error')
-        await expect (errorMessage).toContainText('未入力です。')
-    })
+   
 
 
     

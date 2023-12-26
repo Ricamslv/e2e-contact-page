@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Contact page fill up testing', () => {
 
-    //fill in the form
+    //Enter valid data in the form
     test.beforeEach(async ({ page }) => {
         await page.goto('https://corp.hexabase.app/contact-us');
         await page.locator('label').filter({ hasText: '新規事業開発に関するお問合せ' }).click();
@@ -31,7 +31,7 @@ test.describe('Contact page fill up testing', () => {
         await page.getByLabel('個人情報の取り扱いに同意する').check();
         await page.getByRole('button', { name: '確認する' }).click();
     })
-
+    //the contents of the first page are checked
     test('second page testing', async ({ page }) => {
         await expect(page.locator('text=以下の内容でよろしければ送信してください。')).toBeVisible();
         await expect(page.locator('text=お問合せ種別')).toBeVisible();
@@ -55,7 +55,7 @@ test.describe('Contact page fill up testing', () => {
         //check if the checkbox is clicked
         await expect(page.locator('text=弊社営業活動により')).toHaveText('弊社営業活動により');
 
-        //click the send button
+        //The buttons are working properly
         await page.getByRole('button', { name: '＜　戻る' }).click();
         await page.getByRole('button', { name: '確認する' }).click();
         await page.getByRole('button', { name: '送信する' }).click();
